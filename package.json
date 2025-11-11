@@ -4,9 +4,14 @@
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
-    "hono": "^4.10.4"
+    "@types/bcrypt": "^6.0.0",
+    "bcrypt": "^6.0.0",
+    "hono": "^4.10.4",
+    "mongodb": "^7.0.0",
+    "mongoose": "^8.19.3",
+    "zod": "^4.1.12"
   },
   "devDependencies": {
-    "@types/bun": "latest"  
+    "@types/bun": "latest"
   }
 }
