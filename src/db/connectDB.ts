@@ -1,12 +1,10 @@
 import mongoose from "mongoose";
+import "dotenv/config";
 
-const MONGODB_URI = process.env.MONGODB_URI;
-if (!MONGODB_URI) {
-    throw new Error("MONGODB_URI is not set");
-}
+console.log(process.env.MONGODB_URI);
 export async function connectDB() {
     try {
-        await mongoose.connect(MONGODB_URI as string);
+        await mongoose.connect(process.env.MONGODB_URI as string);
         console.log("Connected to MongoDB");
         return mongoose.connection;
     } catch (error: unknown) {

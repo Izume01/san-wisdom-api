@@ -1,9 +1,8 @@
 import { AdminModel } from "../model/admin.modal";
-import * as bcrypt from "bcrypt";
+import * as bcrypt from "bcryptjs";
 import type { IAdmin } from "../model/admin.modal";
 export const adminServices = {
     async createAdmin(data: Omit<IAdmin , "createdAt" | "updatedAt">) {
-        // hash password
         data.password = await bcrypt.hash(data.password, 10);
 
         const admin = await AdminModel.create(data);

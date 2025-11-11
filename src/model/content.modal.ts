@@ -3,7 +3,7 @@ import mongoose, { Document } from "mongoose";
 export interface IContent {
     title: string;
     description: string;
-    image: string;
+    image?: string;
     createdAt: Date;
     updatedAt: Date;
 }

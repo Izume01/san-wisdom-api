@@ -1,10 +1,10 @@
 import mongoose, { Document } from "mongoose";
-import * as bcrypt from "bcrypt";
+import * as bcrypt from "bcryptjs";
 
 export interface IAdmin {
     username: string;
     password: string;
-    email: string;
+    email?: string;
     createdAt: Date;
     updatedAt: Date;
 }
@@ -34,13 +34,14 @@ const adminSchema = new mongoose.Schema<AdminDocument>({
     password : {
         type : String,
         required : [true, "Password is required"],
-        minlength: [8, "Password must be at least 8 characters long"],
-        maxlength: [32, "Password must be less than 32 characters long"],
         validate: {
-            validator: (password: string) => {
+            validator: function(password: string) {
+                if (password.startsWith('$2b$') || password.startsWith('$2a$')) {
+                    return true;
+                }
                 return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,32}$/.test(password);
             },
-            message: "Password must contain at least one uppercase letter, one lowercase letter, one number and one special character",
+            message: "Password must be 8-32 characters and contain at least one uppercase letter, one lowercase letter, one number and one special character",
         },
     },
     createdAt : {

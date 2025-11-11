@@ -7,12 +7,12 @@ export const adminController = {
         const body = await c.req.json();
         const { username, password, email } = body as { username?: string; password?: string; email?: string };
 
-        if (!username || !password || !email) {
-            return c.json({ error: "Username, password and email are required" }, 400);
+        if (!username || !password ) {
+            return c.json({ error: "Username, password and optional email are required" }, 400);
         }
 
         try {
-            const admin = await adminServices.createAdmin({ username, password, email });
+            const admin = await adminServices.createAdmin({ username, password, email: email || undefined });
             return c.json({ message: "Admin created successfully", admin }, 201);
         } catch (error: unknown) {
             return c.json({ error: (error as Error).message }, 400);
