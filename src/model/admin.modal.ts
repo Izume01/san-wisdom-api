@@ -17,6 +17,12 @@ const adminSchema = new mongoose.Schema<AdminDocument>({
         required: [true, "Username is required"],
         unique: true,
         trim: true,
+        validate : {
+            validator : (username: string) => {
+                return !username.includes(" ");
+            },
+            message: "Username cannot contain spaces",
+        },
     },
     email : {
         type: String,

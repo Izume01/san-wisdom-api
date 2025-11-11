@@ -3,8 +3,6 @@ import * as bcrypt from "bcryptjs";
 import type { IAdmin } from "../model/admin.modal";
 export const adminServices = {
     async createAdmin(data: Omit<IAdmin , "createdAt" | "updatedAt">) {
-        data.password = await bcrypt.hash(data.password, 10);
-
         const admin = await AdminModel.create(data);
         if (!admin) throw new Error("Failed to create admin");
         
@@ -22,21 +20,17 @@ export const adminServices = {
     },
 
     async getAdmin(id: string) {
-        const admin = await AdminModel.findById(id);
+        const admin = await AdminModel.findById(id).select("-password");
         if (!admin) throw new Error("Admin not found");
         return admin;
     },
 
     async updateAdmin(id: string, data: Partial<IAdmin>) {
-        if (data.password) {
-            data.password = await bcrypt.hash(data.password, 10);
-        }
-
-        const admin = await AdminModel.findByIdAndUpdate(id, data, {
-            new: true,
-        });
-
+        const admin = await AdminModel.findById(id);
         if (!admin) throw new Error("Admin not found");
+
+        Object.assign(admin, data);
+        await admin.save();
 
         return admin;
     },

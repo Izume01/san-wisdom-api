@@ -4,10 +4,8 @@ import adminRoutes from './routes/admin.route'
 import contentRoutes from './routes/content.route'
 import { logger } from 'hono/logger'
 
-
 // connect to database
 await connectDB()
-
 
 const app = new Hono()
 
