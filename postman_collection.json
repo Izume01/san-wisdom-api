@@ -1,0 +1,546 @@
+{
+  "info": {
+    "name": "SID Backend API",
+    "description": "Complete API collection for SID Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": ["{{baseUrl}}"],
+          "path": [""]
+        }
+      }
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "Create Admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin123\",\n  \"password\": \"securePassword123\",\n  \"email\": \"admin@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/create",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "create"]
+            }
+          }
+        },
+        {
+          "name": "Admin Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin123\",\n  \"password\": \"securePassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "login"]
+            }
+          }
+        },
+        {
+          "name": "Get Admin by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/getOne/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "getOne", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "your_admin_id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Admin",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"updatedUsername\",\n  \"email\": \"newemail@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/update/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "update", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "your_admin_id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Admin",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/delete/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "delete", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "your_admin_id"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Content",
+      "item": [
+        {
+          "name": "Create Content",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"My First Content\",\n  \"description\": \"This is a detailed description\",\n  \"image\": \"https://example.com/image.jpg\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/content/create",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "content", "create"]
+            }
+          }
+        },
+        {
+          "name": "Get Content by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/content/getOne/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "content", "getOne", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "your_content_id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Content",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Title\",\n  \"description\": \"Updated description\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/content/update/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "content", "update", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "your_content_id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Content",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/content/delete/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "content", "delete", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "your_content_id"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Upload",
+      "item": [
+        {
+          "name": "Generate Upload URL",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fileName\": \"my-image.jpg\",\n  \"fileType\": \"image/jpeg\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/upload/generate",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "upload", "generate"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Resource",
+      "item": [
+        {
+          "name": "Create Resource",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Beach Sunset\",\n  \"description\": \"A beautiful sunset at the beach\",\n  \"fileUrl\": \"https://s3.amazonaws.com/bucket/image.jpg\",\n  \"fileType\": \"image\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/resource/create",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "resource", "create"]
+            }
+          }
+        },
+        {
+          "name": "Get All Resources",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/resource/getAll?limit=10&skip=0",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "resource", "getAll"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "skip",
+                  "value": "0"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Resource by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/resource/getOne/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "resource", "getOne", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "your_resource_id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Search Resources",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/resource/search?q=beach",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "resource", "search"],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "beach"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Resource",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Title\",\n  \"description\": \"Updated description\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/resource/update/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "resource", "update", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "your_resource_id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Resource",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/resource/delete/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "resource", "delete", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "your_resource_id"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Meeting",
+      "item": [
+        {
+          "name": "Create Meeting",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Weekly Standup\",\n  \"meetingLink\": \"https://meet.google.com/abc-defg-hij\",\n  \"description\": \"Team sync meeting\",\n  \"scheduledFor\": \"2025-11-15T10:00:00Z\",\n  \"isActive\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/meeting/create",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "meeting", "create"]
+            }
+          }
+        },
+        {
+          "name": "Get Latest Meeting",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/meeting/latest",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "meeting", "latest"]
+            }
+          }
+        },
+        {
+          "name": "Get All Meetings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/meeting/getAll?limit=10&skip=0&includeInactive=false",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "meeting", "getAll"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "skip",
+                  "value": "0"
+                },
+                {
+                  "key": "includeInactive",
+                  "value": "false"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Meeting by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/meeting/getOne/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "meeting", "getOne", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "your_meeting_id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Update Meeting",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Meeting Title\",\n  \"meetingLink\": \"https://zoom.us/j/123456789\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/meeting/update/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "meeting", "update", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "your_meeting_id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Delete Meeting",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/meeting/delete/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "meeting", "delete", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "your_meeting_id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Activate Meeting",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/meeting/activate/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "meeting", "activate", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "your_meeting_id"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Deactivate Meeting",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/meeting/deactivate/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "meeting", "deactivate", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "your_meeting_id"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+
